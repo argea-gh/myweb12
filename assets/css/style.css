@@ -1637,6 +1637,7 @@ body {
 }
 
 .guide-step {
+  color: whitesmoke;
   background-color: #705202;
   /* background: rgba(255, 255, 255, 0.1); */
   border-radius: 16px;
