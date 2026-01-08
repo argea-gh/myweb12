@@ -1562,20 +1562,6 @@ body {
   position: relative;
 }
 
-.badge-top {
-  position: absolute;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--gold);
-  color: var(--text-dark);
-  font-weight: 600;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  z-index: 2;
-}
-
 /* KATEGORI INTERAKTIF */
 .category-section {
   background-color: var(--gray-bg);
