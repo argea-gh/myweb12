@@ -269,6 +269,83 @@
 	
   <div class="cart-overlay" id="cartOverlay"></div>
 
+  <!-- ✅ LOADER SCRIPT -->
+  <script>
+    // Muat komponen secara dinamis
+    async function loadComponents() {
+      const header = await fetch('components/header.html').then(r => r.text());
+      const footer = await fetch('components/footer.html').then(r => r.text());
+      const scripts = await fetch('components/scripts.html').then(r => r.text());
+      
+      document.getElementById('header-container').innerHTML = header;
+      document.getElementById('footer-container').innerHTML = footer;
+      document.getElementById('scripts-container').innerHTML = scripts;
+      
+      // Inisialisasi JS (mobile menu, dll)
+      if (typeof initHeader !== 'undefined') initHeader();
+    }
+    
+    // Jalankan saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', loadComponents);
+  </script>
+
+  <!-- ✅ RENDER PRODUK & KATEGORI -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Render semua produk
+      renderProducts('all');
+
+      // Render produk unggulan (3 teratas atau beri tag 'featured')
+      const featuredGrid = document.querySelector('.featured-grid');
+      if (featuredGrid) {
+        // Ambil 3 produk pertama sebagai unggulan
+        let productList = JSON.parse(localStorage.getItem('herbaprimaProducts')) || products;
+        const featured = productList.slice(0, 3);
+        
+        featuredGrid.innerHTML = featured.map(product => {
+          const priceFormatted = `Rp ${product.price.toLocaleString('id-ID')}`;
+          return `
+            <div class="product-card featured stagger-item slide-up">
+              <span class="badge-top">⭐ Unggulan</span>
+              <img src="${product.image}" alt="${product.name}" />
+              <div class="card-body">
+                <h4>${product.name}</h4>
+                <div class="price">${priceFormatted}</div>
+                <button class="btn btn-outline btn-add" data-id="${product.id}">
+                  Pilih Produk
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        // Event: Pilih Produk → modal
+        document.querySelectorAll('.btn-add').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const id = e.target.dataset.id;
+            const product = productList.find(p => p.id === id);
+            if (product) openProductModal(product);
+          });
+        });
+      }
+
+      // Event: Klik card kategori
+      document.querySelectorAll('.category-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const category = card.dataset.category;
+          // Update filter buttons
+          document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.category === category || (category === 'Semua' && btn.dataset.category === 'all'));
+          });
+          // Render produk
+          renderProducts(category);
+          // Scroll ke grid produk
+          document.querySelector('.products-all').scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    });
+  </script>
+
   <!-- ✅ SCRIPTS -->
   <script src="assets/js/products.js"></script>
   <script src="assets/js/main.js"></script>
