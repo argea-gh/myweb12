@@ -1513,3 +1513,177 @@ body {
     margin-bottom: 20px;
   }
 }
+
+/* ────────────────────────────────────────── */
+/* PRODUK.HTML — STYLING KHUSUS */
+/* ────────────────────────────────────────── */
+
+.hero-products {
+  background: linear-gradient(135deg, #f0f9f1 0%, #e8f5e9 100%);
+  padding: 80px 0 60px;
+  text-align: center;
+}
+
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.hero-cta .btn {
+  padding: 14px 28px;
+  font-size: 1.05rem;
+}
+
+.hero-badges {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* PRODUK UNGGULAN */
+.products-featured {
+  background-color: var(--white);
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  margin-top: 30px;
+}
+
+.product-card.featured {
+  border: 2px solid var(--green-primary);
+  position: relative;
+}
+
+.badge-top {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--text-dark);
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  z-index: 2;
+}
+
+/* KATEGORI INTERAKTIF */
+.category-section {
+  background-color: var(--gray-bg);
+}
+
+.category-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.category-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(46, 125, 50, 0.15);
+}
+
+.category-icon {
+  width: 70px;
+  height: 70px;
+  background: rgba(46, 125, 50, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 28px;
+  color: var(--green-primary);
+}
+
+.category-card h3 {
+  font-size: 1.4rem;
+  color: var(--green-dark);
+  margin-bottom: 12px;
+}
+
+.category-card p {
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.category-count {
+  background: #f0fdf4;
+  color: var(--green-primary);
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* PANDUAN PEMILIHAN */
+.guide-section {
+  background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-dark) 100%);
+  color: white;
+  padding: 80px 0;
+}
+
+.guide-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.guide-step {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  backdrop-filter: blur(4px);
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  background: var(--gold);
+  color: var(--text-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0 auto 20px;
+}
+
+.guide-step h3 {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+
+.guide-step p {
+  opacity: 0.9;
+}
+
+/* RESPONSIF */
+@media (max-width: 768px) {
+  .hero-products { padding: 60px 0 40px; }
+  .hero-headline { font-size: 2rem; }
+  .hero-cta { flex-direction: column; }
+  .category-cards { grid-template-columns: repeat(2, 1fr); }
+}
