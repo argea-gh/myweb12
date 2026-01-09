@@ -1675,4 +1675,6 @@ body {
   .hero-headline { font-size: 2rem; }
   .hero-cta { flex-direction: column; }
   .category-cards { grid-template-columns: repeat(2, 1fr); }
-}
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
